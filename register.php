@@ -1,3 +1,8 @@
+<?php
+require_once "Core/Config.php";
+include_once  ROOT."/includes/register.php";
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,31 +42,34 @@
 
 
             <div class="errors">
+
+            <pre>
+              <?php print_r($errors) ?>
+            </pre>
                 <ul>
                     <li>incorrect password</li>
                 </ul>
             </div>
-            <form action="">
-
+            <form action="" method="post">
                 <div class="form-input">
-                    <label for="">Email</label>
-                    <input type="email" name="email" placeholder="john@gmail.com">
+                    <label for="">Email *</label>
+                    <input type="text" name="email" value="<?= Helpers::old("email") ?>" placeholder="john@gmail.com">
                 </div>
 
 
                 <div class="form-input">
-                    <label for="">Name</label>
-                    <input type="text" name="name" placeholder="john doe">
+                    <label for="">Name *</label>
+                    <input type="text" name="name" value="<?= Helpers::old("name") ?>" placeholder="john doe">
                 </div>
 
 
                 <div class="form-input">
-                    <label for="">Password</label>
+                    <label for="">Password *</label>
                     <input type="password" name="password"  placeholder="******">
                 </div>
 
                 <div class="form-input">
-                    <label for="">Repeat Password</label>
+                    <label for="">Repeat Password *</label>
                     <input type="password" name="password_again" placeholder="******">
                 </div>
 
