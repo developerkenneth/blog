@@ -25,7 +25,8 @@ class Helpers
     {
         return password_hash($password_string, PASSWORD_DEFAULT);
     }
-    public static function verify_password($password_string, $hashed_password) {
+    public static function verify_password($password_string, $hashed_password)
+    {
         return password_verify($password_string, $hashed_password);
     }
 }

@@ -20,10 +20,15 @@ class User
     // create new user 
     public static function Create($data)
     {
+
+        $db = Db::connect();
         $sql = "INSERT INTO `users` (`name`, `email`, `password`) VALUES (?, ?, ?)";
-        $stmt = Db::connect()->prepare($sql);
+        $stmt = $db->prepare($sql);
         if ($stmt->execute($data)) {
-            return true;
+            $user_id = $db->lastInsertId();
+            $stmt = $db->query("SELECT * FROM `users` WHERE id = '$user_id' LIMIT 1");
+            $user_data = $stmt->fetch();
+            return $user_data;
         }
         return false;
     }
