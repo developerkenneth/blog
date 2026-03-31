@@ -32,4 +32,22 @@ class User
         }
         return false;
     }
+
+    public static function find(string $column, string $value){
+        $db = Db::connect();
+        $sql = "SELECT * FROM `users` WHERE $column = ? LIMIT 1";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$value]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public static function total_users_count(){
+                $db = Db::connect();
+
+        $sql = "SELECT COUNT(*) FROM `users`";
+        $stmt = $db->query($sql);
+        $count = $stmt->fetchColumn();
+        return $count;
+    }
 }

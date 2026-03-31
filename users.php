@@ -14,7 +14,7 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
 }
 
 // always define page title
-$page_title = "Dashboard";
+$page_title = "Users";
 
 
 // fetch all post
@@ -40,17 +40,12 @@ $total_users = User::total_users_count();
 
 
     <div class="main">
-        <h1>Dashboards</h1>
+        <h1>Users</h1>
 
         <div class="cards">
             <div class="card">
                 <h3>Total Users</h3>
                 <p id="totalUsers"><?= $total_users; ?></p>
-            </div>
-
-            <div class="card">
-                <h3>Total Posts</h3>
-                <p id="totalPosts">0</p>
             </div>
         </div>
 
