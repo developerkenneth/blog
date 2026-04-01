@@ -1,0 +1,54 @@
+
+const displayError = document.querySelector(".error");
+async function sendData(data) {
+
+    try {
+        const response = await fetch("http://localhost/blog/api/", {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: data,
+            method: "POST",
+
+        });
+        if (!response.ok) {
+            throw new Error(`error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log(result);
+
+
+    } catch (e) {
+        console.error(e);
+    }
+
+
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let error = false;
+    const form = document.querySelector("#form");
+    const formData = new FormData(form);
+
+    const category = formData.get("categories");
+    const status = formData.get("status");
+    const body = formData.get("body");
+    const featuredImage = formData.get("featured_image");
+
+    if (category.length < 1 || status.length < 1 || body.length < 1) {
+        displayError.textContent = "all fields aside featured image are required";
+        error = true;
+    }
+
+    if (error === false) {
+        console.log(Object.fromEntries(formData));
+
+        // sending form to back end
+        sendData(formData);
+
+    }
+
+
+});

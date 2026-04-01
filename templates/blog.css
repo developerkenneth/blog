@@ -66,11 +66,16 @@ ul{
   margin-right: 2rem;
  
 }
-ul li a{
+
+/* changes made to aid form submission */
+ul li button{
   color: white;
+  background-color: blue;
   text-decoration: none;
-  padding: 0.5rem 0.2rem;
+  padding: 0.5rem 1rem;
   display: block;
+  border: none;
+  margin: 10px 0px;
 
 }
 
@@ -106,6 +111,9 @@ textarea{
   resize: none;
 }
 
+.error {
+  color: red;
+}
 .fa-image{
   color: gray;
   font-size: 2rem;
