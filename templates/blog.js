@@ -4,9 +4,6 @@ async function sendData(data) {
 
     try {
         const response = await fetch("http://localhost/blog/api/", {
-            headers: {
-                "Content-Type": "application/json"
-            },
             body: data,
             method: "POST",
 
