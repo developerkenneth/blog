@@ -1,0 +1,153 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+  background: rgb(242, 242, 242);
+ 
+}
+
+#sideBar{
+  position: fixed;
+  left: 2rem;
+  top: 4rem;
+  bottom: 0;
+  background: white;
+    width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid rgb(201, 192, 192);
+}
+
+.bodyContent{
+  position: relative;
+  margin-left: 240px;
+  margin-top: 4rem;
+  margin-right: 2rem;
+  background: white;
+  min-height: calc(100vh - 4rem);
+  padding: 1rem;
+  border-radius: 3px;
+  border: 1px solid rgb(201, 192, 192);
+}
+
+.topBar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(81, 81, 90);
+  padding: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  z-index: 1;
+  
+}
+
+.left{
+  display: flex;
+  gap: 2rem;
+  
+  margin-left: 2rem;
+  color: white;
+}
+ul{
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  margin-right: 2rem;
+ 
+}
+ul li a{
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.2rem;
+  display: block;
+
+}
+
+ul li a:hover{
+  background: dodgerblue;
+  
+  
+
+}
+select{
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 2px;
+
+}
+#text{
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 2px;
+
+}
+#title{
+  width: 100%;
+  padding: 4px;
+   font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+textarea{
+  width: 100%;
+  height: 10rem;
+  resize: none;
+}
+
+.fa-image{
+  color: gray;
+  font-size: 2rem;
+text-align: center;
+background-color: rgb(245, 243, 243);
+padding: 1rem 4.5rem;
+margin-bottom: 2px;
+
+}
+
+
+ .outline-file{
+   border: 2px dashed #ddd;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+.upload-label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: gray;
+  cursor: pointer;
+}
+#fileUpload{
+  display: none;
+}
+
+
+
+#imagePreview img{
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+.remove-btn{
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}

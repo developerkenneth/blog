@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="topBar">
+    <div class="left">
+      <span>MyBlog</span>
+      <span>Create Post</span>
+    </div>
+    
+    <ul>
+      <li><a href="">Save Draft</a></li>
+      <li><a href="">Preview</a></li>
+      <li><a href="">Publish</a></li>
+    
+    </ul>
+    
+  </div>
+  
+    <div class="bodyContent">
+<h2>Enter Post Title...</h2>
+  <textarea placeholder="Write your post..."></textarea>
+  <div id="imagePreview"></div>
+</div>
+  
+
+
+  <div>
+    <form action="" id="sideBar">
+      <label>Topics:</label>
+      <select>
+        <option>Web Development</option>
+        <option>Graphic Design</option>
+        <option>Nigeria Economy</option>
+        <option>Student Welfare</option>
+      </select>
+
+      <label>Featured Image:</label>
+     
+
+     <div class="outline-file">
+  <label for="fileUpload" class="upload-label">
+    <i class="fa fa-image"></i>
+    <span>Click to upload</span>
+  </label>
+  <input type="file" id="fileUpload">
+</div>
+          
+    <label>Status:</label>
+    <select>
+      <option>Draft</option>
+    </select>
+    
+    </form>
+  
+
+  </div>
+
+  <script src="blog.js"></script>
+
+</body>
+</html>
