@@ -111,6 +111,13 @@ textarea{
   resize: none;
 }
 
+textarea[name="title"]{
+  width: 100%;
+  height: auto;
+  resize: none;
+}
+
+
 .error {
   color: red;
 }

@@ -1,5 +1,6 @@
 <?php
-
+require_once  "../Core/Config.php";
+require_once ROOT."/Model/Post.php";
 // setting the content type acceptable
 
 header("Content-Type: application/json");
@@ -22,5 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    echo json_encode("hello world");
+    $encoded_post = json_encode(Post::index());
+    echo $encoded_post;
 }

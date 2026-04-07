@@ -31,10 +31,11 @@ form.addEventListener("submit", (e) => {
 
     const category = formData.get("categories");
     const status = formData.get("status");
+    const title = formData.get("title");
     const body = formData.get("body");
     const featuredImage = formData.get("featured_image");
 
-    if (category.length < 1 || status.length < 1 || body.length < 1) {
+    if (category.length < 1 || status.length < 1 || body.length < 1 || title.length < 1) {
         displayError.textContent = "all fields aside featured image are required";
         error = true;
     }
