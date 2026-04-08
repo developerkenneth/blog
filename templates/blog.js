@@ -29,7 +29,7 @@ form.addEventListener("submit", (e) => {
     const form = document.querySelector("#form");
     const formData = new FormData(form);
 
-    const category = formData.get("categories");
+    const category = formData.get("category");
     const status = formData.get("status");
     const title = formData.get("title");
     const body = formData.get("body");
@@ -41,11 +41,8 @@ form.addEventListener("submit", (e) => {
     }
 
     if (error === false) {
-        console.log(Object.fromEntries(formData));
-
         // sending form to back end
         sendData(formData);
-
     }
 
 

@@ -8,7 +8,6 @@ async function fetchPosts (){
             throw new Error(`Error code found : ${response.status}`)
         }
         const data = await response.json();
-        console.log(data);
 
     }catch(e){
 
