@@ -112,3 +112,19 @@ th{
 tr:hover{
   background:#f9f9f9;
 }
+
+/* add post link */
+.nav-links-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+
+.add-post{
+  display: inline-block;
+  background-color: #555;
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+}

@@ -9,6 +9,13 @@ body{
  
 }
 
+#back{
+  background-color: inherit;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
 #sideBar{
   position: fixed;
   left: 2rem;

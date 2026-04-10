@@ -1,6 +1,6 @@
 // using toastify 
 
-function showNotification(message, type = "success") {
+export function showNotification(message, type = "success") {
     Toastify({
         text: message,
         duration: 4000,

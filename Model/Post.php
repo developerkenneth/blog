@@ -1,6 +1,6 @@
 <?php
 
-require_once  "../Core/Config.php";
+require_once  dirname(__DIR__) . "/Core/Config.php";
 require_once ROOT . "/Core/Db.php";
 
 class Post
@@ -41,5 +41,19 @@ class Post
         } else {
             return false;
         }
+    }
+
+    // delete post
+    public static function delete($id)
+    {
+        $db = new Db();
+        $connection = $db->connect();
+        $sql = "DELETE FROM `posts` WHERE `id` = ?";
+        $stmt = $connection->prepare($sql);
+        if($stmt->execute([$id])){
+            return true;
+        }
+
+        return false;
     }
 }

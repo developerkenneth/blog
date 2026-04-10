@@ -25,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $status = trim($_POST['status']);
 
     // checking if body and title fields are empty
-    if(empty($title) || empty($body)){
+    if (empty($title) || empty($body)) {
         $error = "title and body field is required ";
         $response['error'] = $error;
         echo json_encode($response);
         exit();
     }
-    
+
     $post = [
         'title' => $title,
         'body' => $body,
@@ -39,38 +39,59 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         'author' => 'John Doe'
     ];
 
-     
 
-    try{
 
-    if(Post::create($post)){
+    try {
 
-       echo json_encode([
-        "success" => "post successful",
-        "data" => $post
-       ]);
-       exit;
-        
-    }else{
-        $response['error'] = "oops failed to upload";
-        echo json_encode($response);
-        exit;
-    }
+        if (Post::create($post)) {
 
-    }catch(Exception $e){
+            echo json_encode([
+                "success" => "post successful",
+                "data" => $post
+            ]);
+            exit;
+        } else {
+            $response['error'] = "oops failed to upload";
+            echo json_encode($response);
+            exit;
+        }
+    } catch (Exception $e) {
         echo json_encode($e->getMessage());
     }
-
-
-
-
-   
-
 }
 
 // get all posts
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    
+
     $encoded_post = json_encode(Post::index());
     echo $encoded_post;
+}
+
+
+// delete post
+if ($_SERVER['REQUEST_METHOD'] === "DELETE") {
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+        $id = (int) $_GET['id'];
+
+        try {
+            if (Post::delete($id)) {
+                echo json_encode([
+                    "id" => $id,
+                    "message" => "post successfully deleted"
+                ]);
+                exit;
+            } else {
+
+                echo json_encode([
+                    "message" => "oops something went wrong"
+                ]);
+                exit;
+            }
+        } catch (Exception $error) {
+            echo json_encode([
+                "message" => $error->getMessage()
+            ]);
+            exit;
+        }
+    }
 }

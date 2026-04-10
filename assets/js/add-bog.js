@@ -1,4 +1,8 @@
-
+import { showNotification } from "./app.js";
+const back = document.querySelector("#back");
+back.addEventListener("click", function(){
+    history.back();
+});
 const displayError = document.querySelector(".error");
 async function sendData(data) {
 
@@ -13,7 +17,7 @@ async function sendData(data) {
         }
 
         const result = await response.json();
-        console.log(result);
+        showNotification(result.success);
 
 
     } catch (e) {
@@ -47,3 +51,4 @@ form.addEventListener("submit", (e) => {
 
 
 });
+
