@@ -1,22 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Blog</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="Css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <h2>Blog Page</h2>
+      <nav>
+        <a href="#" id="hell">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">Service</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
 
-<header>
-  <h1>My Blog</h1>
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="dashboard.html">Dashboard</a>
-  </nav>
-</header>
+      <div class="but">
+        <a href="admin.html" class="btn-admin">+ New Post</a>
+      </div>
+    </header>
 
-<main id="posts-container"></main>
+    <section class="hero">
+      <h1>Discover our latest news</h1>
+      <p>Explore the latest posts and updates</p>
+    </section>
 
-<script src="posts.js"></script>
-<script src="index.js"></script>
-</body>
+    <main class="container">
+      <section class="posts">
+        <h2>Recent Posts And Articles</h2>
+        <div id="posts-container" class="posts-grid"></div>
+      </section>
+
+      <aside class="sidebar">
+        <h3>Featured</h3>
+        <div id="featured-posts"></div>
+      </aside>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
 </html>
