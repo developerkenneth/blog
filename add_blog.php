@@ -1,3 +1,21 @@
+
+<?php
+session_start();
+require_once("Core/Config.php");
+require_once ROOT . "/Core/Auth.php";
+require_once ROOT . "/Core/Helpers.php";
+require_once ROOT . "/Model/User.php";
+
+Auth::login_redirect();
+//gives us user details
+$user = Auth::user();
+$message = "";
+if (isset($_GET['message']) && !empty($_GET['message'])) {
+    $message = Helpers::sanitize_input($_GET['message']);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

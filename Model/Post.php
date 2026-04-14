@@ -17,6 +17,18 @@ class Post
         return $result;
     }
 
+    // get a single post
+    public static function find($id){
+           // db
+        $db = new Db();
+        $connection = $db->connect();
+        $sql = "SELECT * FROM `posts` WHERE `id`= ? LIMIT 1";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute([$id]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
     // create post
     public static function create(array $post_data)
     {
@@ -55,5 +67,30 @@ class Post
         }
 
         return false;
+    }
+
+    // edit or update post
+    public static function edit($data, $id){
+        $db = new Db();
+        $connection = $db->connect();
+        $placeholder_string = "";
+        $values = [];
+
+        foreach($data as $key => $val){
+            $placeholder_string .= "`$key` = ?,";
+            $strlen = (int) strlen($placeholder_string);
+            $query = substr($placeholder_string, 0, $strlen - 1);
+            $values[] = $val;
+        }
+
+        array_push($values, $id);
+        $sql = "UPDATE `posts` SET $query WHERE `id` = ?";
+        $stmt = $connection->prepare($sql);
+        if($stmt->execute($values)){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

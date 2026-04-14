@@ -1,15 +1,17 @@
 import { showNotification } from "./app.js";
 const back = document.querySelector("#back");
-back.addEventListener("click", function(){
-    history.back();
-});
+
+
 const displayError = document.querySelector(".error");
 async function sendData(data) {
 
     try {
         const response = await fetch("http://localhost/blog/api/", {
-            body: data,
-            method: "POST",
+            body: JSON.stringify(data),
+            method: "PUT",
+            headers : {
+                "Content-Type" : "application/json"
+            }
 
         });
         if (!response.ok) {
@@ -17,7 +19,7 @@ async function sendData(data) {
         }
 
         const result = await response.json();
-        showNotification(result.success);
+        console.log(result)
 
 
     } catch (e) {
@@ -37,6 +39,7 @@ form.addEventListener("submit", (e) => {
     const status = formData.get("status");
     const title = formData.get("title");
     const body = formData.get("body");
+    const id = formData.get("id");
     const featuredImage = formData.get("featured_image");
 
     if (category.length < 1 || status.length < 1 || body.length < 1 || title.length < 1) {
@@ -45,8 +48,16 @@ form.addEventListener("submit", (e) => {
     }
 
     if (error === false) {
+
+        const data = {
+            title: title,
+            status : status,
+            body : body,
+            category : category,
+            id : id
+        };
         // sending form to back end
-        sendData(formData);
+        sendData(data);
     
     }
 
