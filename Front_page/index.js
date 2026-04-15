@@ -1,3 +1,15 @@
+if (!localStorage.getItem("posts")) {
+  localStorage.setItem("posts", JSON.stringify([
+    {
+      id: 1,
+      title: "My First Blog Post",
+      author: "Joshua",
+      date: "April 8, 2026",
+      content: "This is my first blog post. I'm testing how the blog page looks and making sure everything is working perfectly."
+    }
+  ]));
+  
+}
 function getPosts() {
   return JSON.parse(localStorage.getItem("posts")) || [];
 }
