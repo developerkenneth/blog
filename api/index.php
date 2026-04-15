@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === "PUT") {
     try {
 
 
-
+       
         if (Post::edit($post, $id)) {
 
             echo json_encode([

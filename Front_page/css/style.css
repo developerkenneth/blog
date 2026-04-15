@@ -58,7 +58,7 @@ body {
 }
 
 .posts {
-  flex: 3;
+  flex: 4;
 }
 
 .posts-grid {
@@ -71,18 +71,19 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
+  padding: 10px;
 }
 .post:hover {
   transform: translateY(-3px);
 }
 
 .read-more {
-  color: blue;
+  color: black;
   font-weight: bold;
 }
 
 .sidebar {
-  flex: 1;
+  flex: 3;
 }
 
 .sidebar .item {
@@ -145,7 +146,7 @@ i:hover {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 19px;
 }
 
 .footer-section {
