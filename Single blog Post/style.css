@@ -1,0 +1,81 @@
+.indian{
+    border-radius: 9rem;
+   display: inline-flex;
+    width: 3rem;
+     
+
+
+
+}
+.blog{
+    margin: 2cm;
+    
+    width: 65rem;
+}
+
+.title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   line-height: 0.1ch;
+  padding: 2cm;
+  padding-bottom: 1rem;
+  line-gap-override: 1ch;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    padding-left: 2cm;
+    gap: 4cm;
+}
+
+.container-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 4cm;
+}
+.subtitle{
+    
+}
+
+.load{
+   border-radius: 3rem;
+   background-color: white;
+   border-color: #ebded1;
+   
+}
+.load2{
+   border-radius: 3rem;
+   background-color: white;
+   border-color: #ebded1;
+
+}
+.about{
+    font-family: 'Times New Roman', Times, serif;
+   font-size: x-large;
+     padding: 3.2cm;
+    font-weight: lighter;
+     gap: 2rem;
+     width: 50rem;
+}
+.nav-link2{
+  gap: 10px;
+}
+.icon{
+    width: 16px;
+    justify-content: space-between;
+    gap: 10px;
+ 
+   
+}
+.touch{
+  border-radius: 3rem;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+.touch:hover{
+background-color: gray;
+}
