@@ -53,3 +53,31 @@ form.addEventListener("submit", (e) => {
 
 });
 
+const fileInput = document.getElementById("fileUpload");
+const uploadBox = document.querySelector(".outline-file");
+
+fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            let img = uploadBox.querySelector("img");
+
+            if (!img) {
+                img = document.createElement("img");
+                uploadBox.appendChild(img);
+            }
+
+            img.src = reader.result;
+            img.style.width = "100%";
+            img.style.height = "150px";
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "5px";
+            img.style.marginTop = "10px";
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
