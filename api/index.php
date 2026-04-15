@@ -65,8 +65,30 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 // get all posts
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
+    if (isset($_GET['id']) && empty($_GET['id']) === false) {
+        $id = (int) $_GET['id'];
+        $post = Post::find($id);
+
+        if ($post) {
+
+            echo json_encode([
+                'message' => "post was found ",
+                "post" => $post
+            ]);
+            exit();
+        }
+
+        echo json_encode([
+            'message' => "post not found",
+            'id' => $id
+        ]);
+
+        exit();
+    }
+
     $encoded_post = json_encode(Post::index());
     echo $encoded_post;
+    exit();
 }
 
 
@@ -136,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === "PUT") {
     try {
 
 
-       
+
         if (Post::edit($post, $id)) {
 
             echo json_encode([
