@@ -8,16 +8,17 @@ class Db
     private $db = "blog";
     private $user = "root";
     private $password = "";
-    private  $con ;
+    private $con ;
 
 
     public function __construct() {
 
         try{
         $dsn = "mysql:host=$this->host;dbname=$this->db;";
-        $this->con = new PDO($dsn, $this->user, $this->password);
-        $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->con->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $pdo = new PDO($dsn, $this->user, $this->password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $this->con = $pdo;
                 
         }catch(PDOException $e){
             echo $e->getMessage();
@@ -30,3 +31,5 @@ class Db
     }
 
 }
+
+
