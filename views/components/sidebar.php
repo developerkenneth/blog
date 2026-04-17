@@ -16,6 +16,10 @@ function get_active($script)
         <a href="users.php" class="<?= get_active("users.php"); ?>">Users</a>
     <?php endif; ?>
 
+    <a href="edit_profile.php" class="<?= get_active("edit_profile.php"); ?>">Edit Profile</a>
+
+    <a href="change_password.php" class="<?= get_active("change_password.php"); ?>">Change Password</a>
+
     <a href="logout.php">Logout</a>
 
 </div>

@@ -33,7 +33,8 @@ class User
         return false;
     }
 
-    public static function find(string $column, string $value){
+    public static function find(string $column, string $value)
+    {
         $db = Db::connect();
         $sql = "SELECT * FROM `users` WHERE $column = ? LIMIT 1";
         $stmt = $db->prepare($sql);
@@ -42,12 +43,27 @@ class User
         return $result;
     }
 
-    public static function total_users_count(){
-                $db = Db::connect();
+    public static function total_users_count()
+    {
+        $db = Db::connect();
 
         $sql = "SELECT COUNT(*) FROM `users`";
         $stmt = $db->query($sql);
         $count = $stmt->fetchColumn();
         return $count;
+    }
+
+    public static function change_password($password, $user_id)
+    {
+        $password_hashed = Helpers::hash_password($password);
+        $db = Db::connect();
+        $sql = "UPDATE `users` SET `password` = ? WHERE `id` = ?";
+        $stmt = $db->prepare($sql);
+
+        if ($stmt->execute([$password_hashed, $user_id])) {
+            return true;
+        }
+
+        return false;
     }
 }
