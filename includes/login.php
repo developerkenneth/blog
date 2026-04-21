@@ -13,6 +13,18 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
+    if (!isset($_POST['csrf_token']) && empty($_POST['csrf_token'])) {
+        echo "failed form processing";
+        http_response_code(400);
+        exit();
+    }
+
+
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        echo "failed form processing";
+        http_response_code(400);
+        exit();
+    }
 
     $required_field = ['email', 'password'];
     foreach ($_POST as $key => $value) {
@@ -49,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 } else {
                     $errors[] = 'oops login failed... please try again later';
                 }
-            }else{
+            } else {
                 $errors[] = "invalid email or password";
             }
         }

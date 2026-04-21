@@ -2,6 +2,10 @@
 require_once  "../Core/Config.php";
 require_once ROOT . "/Model/Post.php";
 require_once ROOT . "/Core/Helpers.php";
+require_once ROOT . "/Core/Auth.php";
+
+session_start();
+
 
 // setting the content type acceptable
 
@@ -18,8 +22,31 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 // create new posts
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
     $response = [];
     $error = "";
+
+    if (!Auth::is_logged_in()) {
+        http_response_code(401);
+
+        $response['error'] = "Unauthorized request.";
+        $response['status'] = 401;
+
+        echo json_encode($response);
+        exit();
+    }
+
+
+    if (empty($_POST)) {
+
+        http_response_code(400);
+
+        $response['error'] = "POST cannot be empty";
+        $response['status'] = 400;
+
+        echo json_encode($response);
+        exit();
+    }
 
     $title = trim($_POST['title']);
     $body = trim($_POST['body']);
@@ -46,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     try {
 
         if (Post::create($post)) {
-
+            http_response_code(201);
             echo json_encode([
                 "success" => "post successful",
                 "data" => $post
@@ -65,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 // get all posts
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
+    // single post if user provides an id
     if (isset($_GET['id']) && empty($_GET['id']) === false) {
         $id = (int) $_GET['id'];
         $post = Post::find($id);
@@ -83,6 +111,16 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             'id' => $id
         ]);
 
+        exit();
+    }
+
+    // if user provides a keyword we will
+
+    if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+        http_response_code(202);
+        $keyword =Helpers::sanitize_input(trim($_GET['keyword']));
+        $encoded_post = json_encode(Post::search($keyword));
+        echo $encoded_post;
         exit();
     }
 
@@ -158,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === "PUT") {
     try {
 
 
-       
+
         if (Post::edit($post, $id)) {
 
             echo json_encode([

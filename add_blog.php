@@ -1,18 +1,22 @@
-
 <?php
 session_start();
 require_once("Core/Config.php");
 require_once ROOT . "/Core/Auth.php";
 require_once ROOT . "/Core/Helpers.php";
 require_once ROOT . "/Model/User.php";
+require_once ROOT . "/Model/Category.php";
+
 
 Auth::login_redirect();
 //gives us user details
 $user = Auth::user();
 $message = "";
 if (isset($_GET['message']) && !empty($_GET['message'])) {
-    $message = Helpers::sanitize_input($_GET['message']);
+  $message = Helpers::sanitize_input($_GET['message']);
 }
+
+$categories = Category::index();
+
 
 
 ?>
@@ -63,12 +67,20 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
     <div>
       <div action="" id="sideBar">
         <label>Topics:</label>
-        <select name="category">
-          <option>Web Development</option>
-          <option>Graphic Design</option>
-          <option>Nigeria Economy</option>
-          <option>Student Welfare</option>
-        </select>
+        <?php if ($categories): ?>
+          <select name="category">
+
+            <?php foreach ($categories as $category) : ?>
+
+              <option><?= $category['name']; ?></option>
+
+            <?php endforeach; ?>
+          </select>
+        <?php else: ?>
+
+          <p>No categories found</p>
+
+        <?php endif; ?>
 
         <label>Featured Image:</label>
 

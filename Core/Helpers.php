@@ -31,7 +31,13 @@ class Helpers
         return password_verify($password_string, $hashed_password);
     }
 
-    public static function redirect ($url){
+    public static function redirect($url)
+    {
         return header("Location:$url");
+    }
+
+    public static function csrf_token()
+    {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }

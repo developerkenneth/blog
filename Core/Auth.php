@@ -37,4 +37,12 @@ class Auth {
             exit();
         }
     }
+
+    
+    public static function loggout_redirect(){
+        if(self::is_logged_in() === true){
+            header("Location:dashboard.php");
+            exit();
+        }
+    }
 }

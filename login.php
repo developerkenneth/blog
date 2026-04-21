@@ -1,6 +1,15 @@
 <?php
+
 require_once "Core/Config.php";
+require_once ROOT . "/Core/Helpers.php";
 include_once  ROOT . "/includes/login.php";
+require_once ROOT. "/Core/Auth.php";
+
+Auth::loggout_redirect();
+
+if (!isset($_SESSION['csrf_token']) && empty($_SESSION['csrf_token'])) {
+  Helpers::csrf_token();
+}
 
 ?>
 <!doctype html>
@@ -56,13 +65,15 @@ include_once  ROOT . "/includes/login.php";
         <form action="" method="post">
           <div class="form-input">
             <label for="">Email *</label>
-            <input  type="text" name="email" value="<?= Helpers::old("email") ?>" placeholder="john@gmail.com" required>
+            <input type="text" name="email" value="<?= Helpers::old("email") ?>" placeholder="john@gmail.com" required>
           </div>
 
           <div class="form-input">
             <label for="">Password *</label>
-            <input type="password" name="password" placeholder="******" required >
+            <input type="password" name="password" placeholder="******" required>
           </div>
+
+          <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
           <div class="form-input">
             <button type="submit">Login</button>

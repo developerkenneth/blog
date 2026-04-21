@@ -17,6 +17,19 @@ class Post
         return $result;
     }
 
+
+    // search by title
+    public static function search($keyword){
+         // db
+        $db = new Db();
+        $connection = $db->connect();
+        $sql = "SELECT * FROM `posts` WHERE `title` LIKE ?  ORDER BY `id` DESC";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(["%$keyword%"]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     // get a single post
     public static function find($id){
            // db
